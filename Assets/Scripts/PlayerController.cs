@@ -8,7 +8,10 @@ public partial class PlayerController : MonoBehaviour
 {
     private Vector2 dir;
     private Vector3 moveDir;
+    private Vector2 lerpDir;
+
     public Vector2 mouseDelta;
+    public float animLerpSpeed = 10.0f;
 
     private PlayerInput playerInput;
     private InputActionMap mainActionMap;
@@ -66,8 +69,7 @@ public partial class PlayerController : MonoBehaviour
         dir = ctx.ReadValue<Vector2>();
         moveDir = new Vector3(dir.x, 0, dir.y);
 
-        playerAnimator.SetFloat("Horizontal", dir.x);
-        playerAnimator.SetFloat("Vertical", dir.y);
+        
     }
 
     public void PlayerMove()
@@ -104,6 +106,11 @@ public partial class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        lerpDir = Vector2.Lerp(lerpDir, dir, Time.deltaTime * animLerpSpeed);
+
+        playerAnimator.SetFloat("Horizontal", lerpDir.x);
+        playerAnimator.SetFloat("Vertical", lerpDir.y);
+
         playerCurrentState.FixedUpdateState(this);
     }
 
