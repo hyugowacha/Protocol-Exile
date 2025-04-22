@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1016,8 +1016,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219994555}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.0043011266, z: 0, w: 0.99999076}
-  m_LocalPosition: {x: 0.27767283, y: 1.58, z: -0.979692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.72, y: 1.58, z: -1.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1264,8 +1264,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439819142}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.0043011266, z: -0, w: 0.99999076}
-  m_LocalPosition: {x: -0.43266612, y: 0, z: 0.14646006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 7fc6566458d8e764b9e58ea279dc6540, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1357,7 +1357,7 @@ MonoBehaviour:
     m_ActionName: Player Actions/Look[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player Actions
+  m_DefaultActionMap: PlayerActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!136 &1439819147
@@ -1422,9 +1422,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b0d4a40c05949458273085bc88c69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseDelta: {x: 0, y: 0}
   playerRigid: {fileID: 1439819148}
   playerAnimator: {fileID: 1439819143}
   playerTransform: {fileID: 1439819144}
+  playerModelTransform: {fileID: 1956493626}
   moveSpeed: 5
   mouseSensitivity: 5
 --- !u!1 &1458979358

@@ -10,6 +10,13 @@ public partial class PlayerController : MonoBehaviour
     private Vector3 moveDir;
     public Vector2 mouseDelta;
 
+    private PlayerInput playerInput;
+    private InputActionMap mainActionMap;
+    private InputAction moveAction;
+    private InputAction lookAction;
+    private InputAction attackAction;
+    private InputAction jumpAction;
+
     [SerializeField]
     private Rigidbody playerRigid;
 
@@ -18,6 +25,7 @@ public partial class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Transform playerTransform;
+
 
     [Header("이동 속도")]
     [SerializeField]
@@ -31,7 +39,26 @@ public partial class PlayerController : MonoBehaviour
 
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+        mainActionMap = playerInput.actions.FindActionMap("PlayerActions");
+
+        moveAction = mainActionMap.FindAction("Move");
+        lookAction = mainActionMap.FindAction("Look");
+        jumpAction = mainActionMap.FindAction("Jump");
+        attackAction = mainActionMap.FindAction("Attack");
+
+        moveAction.performed += OnMove;
+        moveAction.canceled += OnMove;
+
+        lookAction.performed += OnLook;
+        lookAction.canceled += OnLook;  
+
         ChangeState(new IdleState());
+    }
+
+    private void AttackAction_started(InputAction.CallbackContext obj)
+    {
+        throw new System.NotImplementedException();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -39,11 +66,21 @@ public partial class PlayerController : MonoBehaviour
         dir = ctx.ReadValue<Vector2>();
         moveDir = new Vector3(dir.x, 0, dir.y);
 
-        MoveDir = playerTransform.right * MoveDir.x + playerTransform.forward * MoveDir.z;
-        moveDir.y = 0;
-
         playerAnimator.SetFloat("Horizontal", dir.x);
         playerAnimator.SetFloat("Vertical", dir.y);
+    }
+
+    public void PlayerMove()
+    {
+        Vector3 playerForward = playerTransform.TransformDirection(Vector3.forward);
+        Vector3 playerRight = playerTransform.TransformDirection(Vector3.right);
+
+        Vector3 desiredMoveDir = playerForward * moveDir.z + playerRight * moveDir.x;
+
+        desiredMoveDir.y = 0;
+        desiredMoveDir.Normalize();
+
+        playerRigid.MovePosition(playerRigid.position + desiredMoveDir * Time.deltaTime * moveSpeed);
     }
 
     public void OnLook(InputAction.CallbackContext ctx)

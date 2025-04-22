@@ -19,8 +19,6 @@ public class MoveState : IPlayerState
 
     public void FixedUpdateState(PlayerController player)
     {
-        player.PlayerRigid.MovePosition(player.PlayerRigid.position + 
-            player.MoveDir * Time.deltaTime *player.MoveSpeed);
-        //player.PlayerRigid.MoveRotation(player.PlayerRigid.rotation * new Vector3(player.mouseDelta.x , 0 , player.mouseDelta.y) * Time.deltaTime)
+        player.PlayerMove();
     }
 }
