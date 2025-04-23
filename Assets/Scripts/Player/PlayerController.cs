@@ -20,6 +20,7 @@ public partial class PlayerController : MonoBehaviour
     private InputAction attackAction;
     private InputAction jumpAction;
 
+
     [SerializeField]
     private Rigidbody playerRigid;
 
