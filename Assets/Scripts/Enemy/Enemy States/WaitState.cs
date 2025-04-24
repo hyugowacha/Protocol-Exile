@@ -18,7 +18,7 @@ public class WaitState : IEnemyState
 
         if(waitElapsedTime > waitCoolTime)
         {
-            enemy.ChangeState(new PatrolState());
+            //enemy.ChangeState(new PatrolState());
         }
     }
 

@@ -16,6 +16,10 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField]
     protected EnemyData enemyData;
 
+    [Header("목표 플레이어")]
+    [SerializeField]
+    protected Transform target;
+
     [Header("시야 범위")]
     [SerializeField]
     protected float sightRange;

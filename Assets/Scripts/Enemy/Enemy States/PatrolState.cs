@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class PatrolState : IEnemyState
 {
+    public Transform positionA;
+    public Transform positionB;
+
     public void EnterState(EnemyBase enemy)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void UpdateState(EnemyBase enemy)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void FixedUpdateState(EnemyBase enemy)
     {
-        throw new System.NotImplementedException();
+
     }
 }
