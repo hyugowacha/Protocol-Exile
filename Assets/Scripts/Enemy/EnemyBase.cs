@@ -28,4 +28,5 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void Die() { }
     
+    public virtual void ChangeState(IEnemyState newstate) { }
 }

@@ -14,7 +14,7 @@ public class EnemyAController : EnemyBase
         attackRange = enemyData.attackRange;
     }
 
-    public void ChangeState(IEnemyState newstate)
+    public override void ChangeState(IEnemyState newstate)
     {
         enemyCurrentState = newstate;
         newstate.EnterState(this);
