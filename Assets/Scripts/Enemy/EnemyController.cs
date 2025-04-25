@@ -7,6 +7,9 @@ public class EnemyAController : EnemyBase
 {
     private IEnemyState enemyCurrentState;
     public NavMeshAgent agent;
+    public Transform[] wayPoints;
+
+    public SoldierState nowState;
 
     void Start()
     {
@@ -15,7 +18,7 @@ public class EnemyAController : EnemyBase
         sightRange = enemyData.sightRange;
         attackRange = enemyData.attackRange;
 
-        ChangeState(new WaitState());
+        ChangeState(new PatrolState());
     }
 
     public override void ChangeState(IEnemyState newstate)
@@ -43,4 +46,9 @@ public class EnemyAController : EnemyBase
     {
         enemyCurrentState.FixedUpdateState(this);
     }
+}
+
+public enum SoldierState
+{
+    Wait, Patrol, Chase, EnterCombat, Combat, Return
 }

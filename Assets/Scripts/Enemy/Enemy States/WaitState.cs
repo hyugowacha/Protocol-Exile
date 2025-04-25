@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WaitState : IEnemyState
 {
-    float waitCoolTime = 4.0f;
-    float waitElapsedTime;
 
     public void EnterState(EnemyBase enemy)
     {
@@ -14,12 +12,7 @@ public class WaitState : IEnemyState
 
     public void UpdateState(EnemyBase enemy)
     {
-        waitElapsedTime += Time.deltaTime;
 
-        if(waitElapsedTime > waitCoolTime)
-        {
-            //enemy.ChangeState(new PatrolState());
-        }
     }
 
     public void FixedUpdateState(EnemyBase enemy)

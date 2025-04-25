@@ -8,3 +8,5 @@ public interface IEnemyState
     void UpdateState(EnemyBase enemy);
     void FixedUpdateState(EnemyBase enemy);
 }
+
+
