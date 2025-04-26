@@ -15,5 +15,5 @@ MonoBehaviour:
   enemyName: Soldier
   hp: 100
   moveSpeed: 5
-  sightRange: 20
-  attackRange: 10
+  sightRange: 10
+  attackRange: 4
